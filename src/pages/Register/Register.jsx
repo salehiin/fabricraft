@@ -2,9 +2,8 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import swal from 'sweetalert';
+import Swal from "sweetalert2";
 // import { Helmet } from "react-helmet-async";
 
 
@@ -14,70 +13,40 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Register = () => {
 
     const {createUser, updateUserProfile} = useContext(AuthContext);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleRegister = e => {
         e.preventDefault();
         console.log(e.currentTarget);
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        const name = form.name.value;
-        const photo = form.photo.value;
+        const form = new FormData(e.currentTarget);
         const accepted = e.target.terms.checked;
-        console.log(email, password, name, photo);
-        createUser(email, password, name, photo)
-        .then(result => {
-          console.log(result.user);
-          const createdAt = result.user?.metadata?.creationTime;
-          const user = {email, name, photo, createdAt: createdAt};
-          fetch('http://localhost:5000/user', {
-            method: 'POST',
-            headers: {
-              'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-          })
-          .then(res => res.json())
-          .then(data =>{
-            if(data.insertedId){
-              Swal.fire("User added successfully!");
-            }
-            // navigate( location?.state ? location.state : '/' );
-          })
-        })
-        .catch(error => {
-          console.error(error)
-        })
-        // const form = new FormData(e.currentTarget);
-        // const accepted = e.target.terms.checked;
 
 
-        // const email = form.get('email');
-        // const password = form.get('password');
-        // const name = form.get('name');
-        // const photo = form.get('photo');
-        // console.log(name, photo, email, password);
+        const email = form.get('email');
+        const password = form.get('password');
+        const name = form.get('name');
+        const photo = form.get('photo');
+        console.log(name, photo, email, password);
 
         if ( password.length < 6 ){
           // alert('Password must be at least 6 characters.');
-          Swal.fire("Password must be at least 6 characters!");
+          swal("Password must be at least 6 characters!");
           return;
         }
         else if (!/[A-Z]/.test(password)){
           // alert('Password must have 1 uppercase character.')
-          Swal.fire("Password must have 1 uppercase character!");
+          swal("Password must have 1 uppercase character!");
           return;
         }
         else if (!/[a-z]/.test(password)){
           // alert('Password must have 1 lower character.')
-          Swal.fire("Password must have 1 lower character!");
+          swal("Password must have 1 lower character!");
           return;
         }
         else if (!accepted){
           // alert('Please accept our terms and conditions!')
-          Swal.fire("Please accept our terms and conditions!");
+          swal("Please accept our terms and conditions!");
           return;
         }
 
@@ -86,19 +55,19 @@ const Register = () => {
           updateUserProfile(name, photo)
           .then(() =>{
 
-            // navigate( location?.state ? location.state : '/' );
+            navigate( location?.state ? location.state : '/' );
 
           })
             console.log(result.user)
             // alert('User created successfully.')
-            // swal("User created successfully!");
+            Swal.fire("User created successfully!");
             
             
         })
         .catch(error =>{
             console.error(error)
             // alert('Email already in use.')
-            // Swal.fire("Email already in use!");
+            swal("Email already in use!");
         })
 
       }
@@ -199,9 +168,9 @@ const Register = () => {
             </form>
             <p className="text-center">
               Already have an account?
-              <Link to="/login" className="text-primary font-bold">
+              <Link to="/signin" className="text-primary font-bold">
                 {" "}
-                Login
+                Sign In
               </Link>
             </p>
           </div>
@@ -213,5 +182,3 @@ const Register = () => {
 
 export default Register;
 
-
-// v- 50-6
