@@ -18,6 +18,7 @@ const Login = () => {
     e.preventDefault();
     console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
+    console.log(form.get('password'));
     const email = form.get('email');
     const password = form.get('password');
     console.log(email, password);
@@ -162,6 +163,8 @@ const Login = () => {
 };
 
 export default Login;
+
+// git commit -m "project setup done"
 
 
 

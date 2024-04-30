@@ -31,22 +31,22 @@ const Register = () => {
 
         if ( password.length < 6 ){
           // alert('Password must be at least 6 characters.');
-          swal("Password must be at least 6 characters!");
+          Swal.fire("Password must be at least 6 characters!");
           return;
         }
         else if (!/[A-Z]/.test(password)){
           // alert('Password must have 1 uppercase character.')
-          swal("Password must have 1 uppercase character!");
+          Swal.fire("Password must have 1 uppercase character!");
           return;
         }
         else if (!/[a-z]/.test(password)){
           // alert('Password must have 1 lower character.')
-          swal("Password must have 1 lower character!");
+          Swal.fire("Password must have 1 lower character!");
           return;
         }
         else if (!accepted){
           // alert('Please accept our terms and conditions!')
-          swal("Please accept our terms and conditions!");
+          Swal.fire("Please accept our terms and conditions!");
           return;
         }
 
@@ -67,7 +67,7 @@ const Register = () => {
         .catch(error =>{
             console.error(error)
             // alert('Email already in use.')
-            swal("Email already in use!");
+            Swal.fire("Email already in use!");
         })
 
       }

@@ -1,7 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
 import userDefaultPic from '../../assets/user.png'
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleSignOut = () =>{
+    logOut()
+    .then()
+    .catch()
+  }
+
   const navLinks = (
     <>
       <li><NavLink to="/">Home</NavLink></li>
@@ -48,22 +58,41 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src={userDefaultPic}
-              />
+          
+          {
+
+            user ?
+
+            
+            <div className="flex flex-col md:flex-row items-center">
+
+              <div className="tooltip tooltip-left" data-tip={user?.displayName || 'User Unknown'}>
+                <div tabIndex={0} role="button" className="mr-1 avatar flex">
+                  <div className="w-10 rounded-full">
+                    <img alt="Tailwind CSS Navbar component" src={user?.photoURL || userDefaultPic} />
+                  </div>
+                </div>
+              </div>
+              
+              {/* <button className="btn btn-sm btn-ghost">{user?.displayName || 'User Unknown'}</button>
+              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar flex">
+                <div className="w-10 rounded-full">
+                  <img alt="Tailwind CSS Navbar component" src={user?.photoURL || userDefaultPic} />
+                </div>
+              </div> */}
+              
+              <button onClick={handleSignOut} className="btn btn-sm btn-accent">Log Out</button>
             </div>
-          </div>
-          <Link to="/signin">
-            <button className="btn bg-[#dc0000]">Sign in </button>
-          </Link>
-          &nbsp; | &nbsp;<Link to="/register"> Register</Link>
+
+
+            :
+            <div>
+              <Link to="/signin"><button className="btn bg-[#dc0000]">Sign in </button></Link>
+              &nbsp; | &nbsp;<Link to="/register"> Register</Link>
+            </div>
+
+          }
+          
         </div>
       </div>
     </div>
