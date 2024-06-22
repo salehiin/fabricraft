@@ -9,7 +9,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 
-console.log(import.meta.env.VITE_PASS)
+// console.log(import.meta.env.VITE_PASS)
 
 
 // Your web app's Firebase configuration

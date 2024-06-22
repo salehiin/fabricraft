@@ -1,6 +1,6 @@
 
 
-const Collection = () => {
+const Home = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Collection = () => {
     );
 };
 
-export default Collection;
+export default Home;
