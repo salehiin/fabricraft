@@ -12,6 +12,7 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
+import ItemDetails from "../pages/ItemDetails";
 
 
 const router = createBrowserRouter([
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home></Home>,
-                // loader: () => fetch('https://aten-fabricraft-server-iz3av9pl5-salehins-projects.vercel.app/item')
+                // loader: () => fetch(`${import.meta.env.VITE_API_URL}/items`)
+                // loader: () => fetch('https://aten-fabricraft-server-iz3av9pl5-salehins-projects.vercel.app/items')
             },
             {
                 path: '/login',
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/item/:id',
+                element: <ItemDetails></ItemDetails>
             },
             // {
             //     path: '/collection',

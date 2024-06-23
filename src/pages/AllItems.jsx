@@ -2,18 +2,10 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ItemCard from './ItemCard';
 import { useEffect, useState } from 'react';
-import axios from 'axios'
 
-const TabCategories = () => {
+const AllItems = ({items}) => {
 
-    const [items, setItems] = useState([])
-    useEffect(()=>{
-        const getData = async()=>{
-            const {data} = await axios(`${import.meta.env.VITE_API_URL}/items`)
-            setItems(data)
-        }
-        getData()
-    }, [])
+    
 
     return (
         
@@ -83,5 +75,5 @@ const TabCategories = () => {
     );
 };
 
-export default TabCategories;
+export default AllItems;
 
