@@ -13,6 +13,9 @@ import Home from "../pages/Home";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import ItemDetails from "../pages/ItemDetails";
+import AllItems from "../pages/AllItems";
+import AddItems from "../pages/AddItems";
+import MyItems from "../pages/MyItems";
 
 
 const router = createBrowserRouter([
@@ -28,6 +31,18 @@ const router = createBrowserRouter([
                 // loader: () => fetch('https://aten-fabricraft-server-iz3av9pl5-salehins-projects.vercel.app/items')
             },
             {
+                path: '/items',
+                element: <AllItems></AllItems>
+            },
+            {
+                path: '/addItems',
+                element: <AddItems></AddItems>
+            },
+            {
+                path: '/myItems',
+                element: <MyItems></MyItems>
+            },
+            {
                 path: '/login',
                 element: <Login></Login>
             },
@@ -37,11 +52,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/item/:id',
-                element: <ItemDetails></ItemDetails>
+                element: <ItemDetails></ItemDetails>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/item/${params.id}`)
             },
             // {
-            //     path: '/collection',
-            //     element: <Collection></Collection>
+                //     path: '/collection',
+                //     element: <Collection></Collection>
             // },
             // {
             //     path: '/collections/:id',

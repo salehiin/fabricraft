@@ -24,6 +24,15 @@ const Navbar = () => {
           <li>
             <Link to='/'>Home</Link>
           </li>
+          <li>
+            <Link to='/items'>All Art & craft Items</Link>
+          </li>
+          <li>
+            <Link to='/addItems'>Add Craft Item</Link>
+          </li>
+          <li>
+            <Link to='/myItems'>My Art & Craft List</Link>
+          </li>
 
           {!user && <li>
             <Link to="/login">Login</Link>

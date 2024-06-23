@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom"
 import { AuthContext } from "../providers/AuthProvider";
 
 
-const ItemDetails = () => {
+const AddItems = () => {
 
     const {user} = useContext(AuthContext)
 
@@ -19,6 +19,38 @@ const ItemDetails = () => {
         processing_time,
         stockStatus,
       } = item || {};
+
+
+      const handleFormSubmission = async e =>{
+        e.preventDefault()
+        const form = e.target
+        const itemId = _id
+        const name = form.item_name.value
+        const category = form.subcategory_Name.value
+        const description = form.short_description.value
+        const price = parseFloat(form.price.value)
+        const rate = form.rating.value
+        const customize = form.customization.value
+        const process = form.processing_time.value
+        const status = form.stockStatus.value
+        const email = user?.email
+
+        const goodData = {
+            itemId,
+            name,
+            category,
+            description,
+            price,
+            rate,
+            customize,
+            process,
+            status,
+            email
+        }
+        console.table(goodData);
+
+      }
+
 
     return (
       <div className='flex flex-col md:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto '>
@@ -66,7 +98,7 @@ const ItemDetails = () => {
             Place A Bid
           </h2>
   
-          <form>
+          <form onSubmit={handleFormSubmission}>
             <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
               <div>
                 <label className='text-gray-700 ' htmlFor='price'>
@@ -126,4 +158,4 @@ const ItemDetails = () => {
     )
   }
   
-  export default ItemDetails
+  export default AddItems

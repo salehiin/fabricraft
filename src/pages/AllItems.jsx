@@ -1,11 +1,19 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import ItemCard from './ItemCard';
 import { useEffect, useState } from 'react';
+import axios from 'axios'
+import ItemCard from '../components/ItemCard';
 
-const AllItems = ({items}) => {
+const AllItems = () => {
 
-    
+    const [items, setItems] = useState([])
+    useEffect(()=>{
+        const getData = async()=>{
+            const {data} = await axios(`${import.meta.env.VITE_API_URL}/items`)
+            setItems(data)
+        }
+        getData()
+    }, [])
 
     return (
         
