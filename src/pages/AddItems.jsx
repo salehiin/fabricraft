@@ -10,30 +10,35 @@ const AddItems = () => {
     const item = useLoaderData()
     const {
         _id,
-        item_name,
-        subcategory_Name,
-        short_description,
-        price,
-        rating,
-        customization,
-        processing_time,
-        stockStatus,
-      } = item || {};
+        // item_name,
+        // subcategory_Name,
+        // short_description,
+        // price,
+        // rating,
+        // customization,
+        // processing_time,
+        // stockStatus,
+      } = item || {}
 
 
       const handleFormSubmission = async e =>{
         e.preventDefault()
         const form = e.target
         const itemId = _id
-        const name = form.item_name.value
-        const category = form.subcategory_Name.value
-        const description = form.short_description.value
-        const price = parseFloat(form.price.value)
-        const rate = form.rating.value
-        const customize = form.customization.value
-        const process = form.processing_time.value
-        const status = form.stockStatus.value
+        const name = form.name.value
+        // const name = form.item_name.value
+        const category = form.category.value
+        // const category = form.subcategory_Name.value
+        // const description = form.short_description.value
+        // const price = parseFloat(form.price.value)
+        const rating = form.rating.value
+        const customization = form.customization.value
+        const processing_time = form.processing_time.value
+        const stockStatus = form.stockStatus.value
         const email = user?.email
+        // const name = form.item_name ? form.item_name.value : '';
+        const description = form.description ? form.description.value : '';
+        const price = form.price ? parseFloat(form.price.value) : 0;
 
         const goodData = {
             itemId,
@@ -41,10 +46,10 @@ const AddItems = () => {
             category,
             description,
             price,
-            rate,
-            customize,
-            process,
-            status,
+            rating,
+            customization,
+            processing_time,
+            stockStatus,
             email
         }
         console.table(goodData);
@@ -55,7 +60,7 @@ const AddItems = () => {
     return (
       <div className='flex flex-col md:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto '>
         {/* Job Details */}
-        <div className='flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]'>
+        {/* <div className='flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]'>
           <div className='flex items-center justify-between'>
             <span className='text-sm font-light text-gray-800 '>
               Deadline: 12/08/2024
@@ -91,7 +96,7 @@ const AddItems = () => {
               Price: {price}
             </p>
           </div>
-        </div>
+        </div> */}
         {/* Place A Bid Form */}
         <section className='p-6 w-full  bg-white rounded-md shadow-md flex-1 md:min-h-[350px]'>
           <h2 className='text-lg font-semibold text-gray-700 capitalize '>
@@ -100,6 +105,92 @@ const AddItems = () => {
   
           <form onSubmit={handleFormSubmission}>
             <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
+  
+              
+                {/* 1 */}
+              <div>
+                <label className='text-gray-700 ' htmlFor='comment'>
+                  Name
+                </label>
+                <input
+                  id='name'
+                  name='name'
+                  type='text'
+                  className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                />
+              </div>
+              {/* 2 */}
+              <div>
+                <label className='text-gray-700 ' htmlFor='comment'>
+                    Category
+                </label>
+                <input
+                  id='category'
+                  name='category'
+                  type='text'
+                  className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                />
+              </div>
+              {/* 3 */}
+              <div>
+                <label className='text-gray-700 ' htmlFor='comment'>
+                    Rating
+                </label>
+                <input
+                  id='rating'
+                  name='rating'
+                  type='text'
+                  className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                />
+              </div>
+              {/* 4 */}
+              <div>
+                <label className='text-gray-700 ' htmlFor='comment'>
+                Customization
+                </label>
+                <input
+                  id='customization'
+                  name='customization'
+                  type='text'
+                  className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                />
+              </div>
+              {/* 5 */}
+              <div>
+                <label className='text-gray-700 ' htmlFor='comment'>
+                Processing time
+                </label>
+                <input
+                  id='processing_time'
+                  name='processing_time'
+                  type='text'
+                  className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                />
+              </div> 
+              <div>
+                <label className='text-gray-700 ' htmlFor='comment'>
+                  Stock status
+                </label>
+                <input
+                  id='stockStatus'
+                  name='stockStatus'
+                  type='text'
+                  className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                />
+              </div>
+              <div>
+                <label className='text-gray-700 ' htmlFor='emailAddress'>
+                  Email Address
+                </label>
+                <input
+                  id='email'
+                  type='email'
+                  name='email'
+                  disabled
+                  defaultValue={user?.email}
+                  className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                />
+              </div>
               <div>
                 <label className='text-gray-700 ' htmlFor='price'>
                   Price
@@ -111,37 +202,22 @@ const AddItems = () => {
                   className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                 />
               </div>
-  
-              <div>
-                <label className='text-gray-700 ' htmlFor='emailAddress'>
-                  Email Address
-                </label>
-                <input
-                  id='emailAddress'
-                  type='email'
-                  name='email'
-                  disabled
-                  defaultValue={user?.email}
-                  className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-                />
-              </div>
-  
               <div>
                 <label className='text-gray-700 ' htmlFor='comment'>
-                  Comment
+                 Description
                 </label>
                 <input
-                  id='comment'
-                  name='comment'
+                  id='description'
+                  name='description'
                   type='text'
                   className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                 />
               </div>
-              <div className='flex flex-col gap-2 '>
-                <label className='text-gray-700'>Deadline</label>
+              {/* <div className='flex flex-col gap-2 '> */}
+                {/* <label className='text-gray-700'>Deadline</label> */}
   
                 {/* Date Picker Input Field */}
-              </div>
+              {/* </div> */}
             </div>
   
             <div className='flex justify-end mt-6'>
