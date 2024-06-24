@@ -19,8 +19,8 @@ const AllItems = () => {
         
             <Tabs>
                 <div className='container py-10 mx-auto'>
-                    <h1 className='text-2xl font-semibold text-center capitalize lg:text-3xl'>Browse Items By Categories</h1>
-                    <p className='max-w-2xl mx-auto my-6 text-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum id inventore, numquam repellendus iusto sint dolorum repudiandae necessitatibus amet ullam.</p>
+                    <h1 className='text-2xl font-semibold text-center capitalize lg:text-3xl'>Endless Possibilities: Find Your Perfect Craft Supplies!</h1>
+                    <p className='max-w-2xl mx-auto my-6 text-center '>Browse our all items page to discover a vast array of arts and crafts supplies. From beginner to expert, find everything you need to bring your creative visions to life.</p>
                     <div className='flex items-center justify-center'>
                         <TabList>
                             <Tab>All</Tab>

@@ -19,8 +19,8 @@ const TabCategories = () => {
         
             <Tabs>
                 <div className='container py-10 mx-auto'>
-                    <h1 className='text-2xl font-semibold text-center capitalize lg:text-3xl'>Browse Items By Categories</h1>
-                    <p className='max-w-2xl mx-auto my-6 text-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum id inventore, numquam repellendus iusto sint dolorum repudiandae necessitatibus amet ullam.</p>
+                    <h1 className='text-2xl font-semibold text-center capitalize lg:text-3xl'>Crafting Dreams: Your Gateway to Artistic Expression!</h1>
+                    <p className='max-w-2xl mx-auto my-6 text-center '>Explore our featured section for unique arts and crafts, handpicked to inspire your creativity and help you create beautiful, one-of-a-kind pieces.</p>
                     <div className='flex items-center justify-center'>
                         <TabList>
                             <Tab>Embroidery</Tab>
