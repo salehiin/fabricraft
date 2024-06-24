@@ -25,14 +25,9 @@ const Navbar = () => {
             <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link to='/items'>All Art & craft Items</Link>
+            <Link to='/items'>All Art & Craft Items</Link>
           </li>
-          <li>
-            <Link to='/addItems'>Add Craft Item</Link>
-          </li>
-          <li>
-            <Link to='/myItems'>My Art & Craft List</Link>
-          </li>
+          
 
           {!user && <li>
             <Link to="/login">Login</Link>
@@ -59,10 +54,10 @@ const Navbar = () => {
             className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#40E0D0] rounded-box w-52'
           >
             <li>
-              <div className='justify-between'>Add Job</div>
+              <Link to='/addItems' className='justify-between'>Add Craft Item</Link>
             </li>
             <li>
-              <div>My Posted Jobs</div>
+              <Link to='/myItems'>My Art & Craft List</Link>
             </li>
             <li>
               <div>My Bids</div>

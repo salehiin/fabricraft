@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom"
 import { AuthContext } from "../providers/AuthProvider";
+import axios from "axios";
 
 
 const AddItems = () => {
@@ -25,26 +26,29 @@ const AddItems = () => {
         e.preventDefault()
         const form = e.target
         const itemId = _id
-        const name = form.name.value
+        const item_name = form.item_name.value
         // const name = form.item_name.value
-        const category = form.category.value
+        const subcategory_Name = form.subcategory_Name.value
         // const category = form.subcategory_Name.value
-        // const description = form.short_description.value
-        // const price = parseFloat(form.price.value)
+        // const short_description = form.short_description.value
+        const price = parseFloat(form.price.value)
         const rating = form.rating.value
         const customization = form.customization.value
+        const image = form.image.value
         const processing_time = form.processing_time.value
         const stockStatus = form.stockStatus.value
+        const short_description = form.short_description.value
         const email = user?.email
         // const name = form.item_name ? form.item_name.value : '';
-        const description = form.description ? form.description.value : '';
-        const price = form.price ? parseFloat(form.price.value) : 0;
+        // const description = form.description ? form.description.value : '';
+        // const price = form.price ? parseFloat(form.price.value) : 0;
 
-        const goodData = {
+        const newItem = {
             itemId,
-            name,
-            category,
-            description,
+            item_name,
+            image,
+            subcategory_Name,
+            short_description,
             price,
             rating,
             customization,
@@ -52,7 +56,12 @@ const AddItems = () => {
             stockStatus,
             email
         }
-        console.table(goodData);
+        try{
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/item`, newItem)
+            console.log(data)
+        }catch(err){
+            console.log(err)
+        }
 
       }
 
@@ -113,8 +122,8 @@ const AddItems = () => {
                   Name
                 </label>
                 <input
-                  id='name'
-                  name='name'
+                  id='item_name'
+                  name='item_name'
                   type='text'
                   className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                 />
@@ -125,8 +134,8 @@ const AddItems = () => {
                     Category
                 </label>
                 <input
-                  id='category'
-                  name='category'
+                  id='subcategory_Name'
+                  name='subcategory_Name'
                   type='text'
                   className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                 />
@@ -192,6 +201,17 @@ const AddItems = () => {
                 />
               </div>
               <div>
+                <label className='text-gray-700 ' htmlFor='comment'>
+                  Image
+                </label>
+                <input
+                  id='image'
+                  type='text'
+                  name='image'
+                  className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                />
+              </div>
+              <div>
                 <label className='text-gray-700 ' htmlFor='price'>
                   Price
                 </label>
@@ -207,8 +227,8 @@ const AddItems = () => {
                  Description
                 </label>
                 <input
-                  id='description'
-                  name='description'
+                  id='short_description'
+                  name='short_description'
                   type='text'
                   className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                 />
@@ -235,3 +255,5 @@ const AddItems = () => {
   }
   
   export default AddItems
+
+  // d1/v5 28:30

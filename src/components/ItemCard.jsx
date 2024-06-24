@@ -7,6 +7,7 @@ const ItemCard = ({ item }) => {
     subcategory_Name,
     short_description,
     price,
+    image,
     rating,
     customization,
     processing_time,
@@ -33,7 +34,7 @@ const ItemCard = ({ item }) => {
 
         <img
           className="object-cover w-full h-48 mt-2"
-          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80"
+          src={image || "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80"} 
           alt="NIKE AIR"
         />
 

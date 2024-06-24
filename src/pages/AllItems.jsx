@@ -23,6 +23,7 @@ const AllItems = () => {
                     <p className='max-w-2xl mx-auto my-6 text-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum id inventore, numquam repellendus iusto sint dolorum repudiandae necessitatibus amet ullam.</p>
                     <div className='flex items-center justify-center'>
                         <TabList>
+                            <Tab>All</Tab>
                             <Tab>Embroidery</Tab>
                             <Tab>Knitting & Crocheting</Tab>
                             <Tab>Quilting</Tab>
@@ -33,6 +34,15 @@ const AllItems = () => {
                     </div>
 
                     <div className=''>
+                        <TabPanel>
+                            <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+                                {items.filter(item =>
+                                    item.subcategory_Name === 'Embroidery' || item.subcategory_Name === 'Knitting & Crocheting' || item.subcategory_Name === 'Knitting & Crocheting' || item.subcategory_Name === 'Quilting' || item.subcategory_Name === 'Beadwork' || item.subcategory_Name === 'Tie-Dyeing' || item.subcategory_Name === 'Macrame'
+                                ).map(item => (
+                                    <ItemCard key={item._id} item={item} />
+                                ))}
+                            </div>
+                        </TabPanel>
                         <TabPanel>
                             <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                                 {items.filter(i=>i.subcategory_Name==='Embroidery').map(item=>(

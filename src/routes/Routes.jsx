@@ -16,12 +16,14 @@ import ItemDetails from "../pages/ItemDetails";
 import AllItems from "../pages/AllItems";
 import AddItems from "../pages/AddItems";
 import MyItems from "../pages/MyItems";
+import ErrorPage from "../pages/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
 
             {
