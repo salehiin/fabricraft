@@ -17,6 +17,7 @@ import AllItems from "../pages/AllItems";
 import AddItems from "../pages/AddItems";
 import MyItems from "../pages/MyItems";
 import ErrorPage from "../pages/ErrorPage";
+import UpdateItem from "../pages/UpdateItem";
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
             {
                 path: '/item/:id',
                 element: <ItemDetails></ItemDetails>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/item/${params.id}`)
+            },
+            {
+                path: '/update/:id',
+                element: <UpdateItem></UpdateItem>,
                 loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/item/${params.id}`)
             },
             // {
