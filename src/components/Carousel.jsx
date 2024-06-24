@@ -34,13 +34,13 @@ export default function Carousel() {
         className="mySwiper"
       >
         <SwiperSlide>
-            <Slide image={bg1} text='Get something new'></Slide>
+            <Slide image={bg1} text='Where Imagination Meets Artistry'></Slide>
         </SwiperSlide>
         <SwiperSlide>
-            <Slide image={bg2} text='Get something new'></Slide>
+            <Slide image={bg2} text='Crafting Inspiration, One Creation at a Time'></Slide>
         </SwiperSlide>
         <SwiperSlide>
-            <Slide image={bg3} text='Get something new'></Slide>
+            <Slide image={bg3} text='Unleash Your Creativity with Every Craft'></Slide>
         </SwiperSlide>
         
         

@@ -1,13 +1,6 @@
-// const { createBrowserRouter } = require("react-router-dom");
+
 import { createBrowserRouter } from "react-router-dom";
-// import Root from "../layouts/Root";
-// import Gallery from "../pages/Home/Gallery";
-// import MyCollections from "../pages/Admin/MyCollections";
-// import ManageItems from "../pages/Admin/ManageItems";
-import PrivateRoute from "./PrivateRoute";
-// import Collection from "../pages/Collection/Collection";
-// import UpdateItem from "../pages/Admin/UpdateItem";
-// import Users from "../Users/Users";
+
 import Main from "../layouts/Main";
 import Home from "../pages/Home";
 import Login from "../pages/Authentication/Login";
@@ -18,6 +11,7 @@ import AddItems from "../pages/AddItems";
 import MyItems from "../pages/MyItems";
 import ErrorPage from "../pages/ErrorPage";
 import UpdateItem from "../pages/UpdateItem";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -39,11 +33,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addItems',
-                element: <AddItems></AddItems>
+                element: <PrivateRoute><AddItems></AddItems></PrivateRoute>
             },
             {
                 path: '/myItems',
-                element: <MyItems></MyItems>
+                element: <PrivateRoute><MyItems></MyItems></PrivateRoute>
             },
             {
                 path: '/login',
@@ -55,12 +49,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/item/:id',
-                element: <ItemDetails></ItemDetails>,
+                element: <PrivateRoute><ItemDetails></ItemDetails></PrivateRoute>,
                 loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/item/${params.id}`)
             },
             {
                 path: '/update/:id',
-                element: <UpdateItem></UpdateItem>,
+                element: <PrivateRoute><UpdateItem></UpdateItem></PrivateRoute>,
                 loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/item/${params.id}`)
             },
             // {

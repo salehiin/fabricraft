@@ -59,12 +59,7 @@ const Navbar = () => {
             <li>
               <Link to='/myItems'>My Art & Craft List</Link>
             </li>
-            <li>
-              <div>My Bids</div>
-            </li>
-            <li>
-              <div>Bid Requests</div>
-            </li>
+            
             <li className='mt-2'>
               <button onClick={logOut} className='bg-[#FFF44F] block text-center text-black'>Logout</button>
             </li>
