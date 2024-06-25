@@ -135,16 +135,16 @@ const TabCategories = () => {
                                         return group[randomIndex];
                                     });
 
-                                    const requiredItems = 8;
+                                    // const requiredItems = 8;
 
                                     // Duplicate items until we have at least the required number
-                                    let itemsPool = [];
-                                    while (itemsPool.length < requiredItems) {
-                                    itemsPool = itemsPool.concat(selectedItems);
+                                    // let itemsPool = [];
+                                    // while (itemsPool.length < requiredItems) {
+                                    // itemsPool = itemsPool.concat(selectedItems);
 }
 
                                     // Shuffle the selected items and take up to 3
-                                    const randomItems = selectedItems.sort(() => 0.5 - Math.random()).slice(0, requiredItems);
+                                    const randomItems = selectedItems.sort(() => 0.5 - Math.random()).slice(0, 8);
 
                                     return randomItems.map(item => (
                                         <ItemCard key={item._id} item={item} />
