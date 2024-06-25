@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom"
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
-// import toast from 'react-hot-toast'
+import toast from 'react-hot-toast'
 
 
 const AddItems = () => {
